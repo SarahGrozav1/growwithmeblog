@@ -4,11 +4,17 @@ from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm
 
+class HomeScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'index.html'
+    paginate_by = 6
+
 
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'skincare.html'
     paginate_by = 6
 
 
@@ -77,3 +83,16 @@ class PostLike(View):
         
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+class Favorite(View):
+   def get(self, request):
+        return render(
+            request,
+            "favorite.html",
+        )
+   
+class Pin(View):
+    def get(self, request):
+        return render(
+            request,
+            "pin.html",
+        )
