@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Explora&family=Grandiflora+One&family=Hedvig+Letters+Serif:opsz@12..24&family=Lora:ital@0;1&family=Roboto+Mono:wght@300;400&display=swap');
+
 body {
-    background-color: rgb(179, 179, 179);
+    background-color: rgb(168, 151, 151); 
+}
+
+.navbar {
+    background-color: rgb(141, 99, 99);
+
+}
+
+.navbar-brand {
+    font-family: Explora, sans-serif;
+    font-size: 60px;
+}
+
+/* HOME PAGE */
+
+.card-link {
+    font-family: Grandiflora One, sans-serif;
+    text-decoration: none;
+}
+
+h5 {
+    font-family: Grandiflora One, sans-serif;
+}
+
+p {
+    font-family: Lora, sans-serif;
 }

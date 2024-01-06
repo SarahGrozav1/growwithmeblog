@@ -11,10 +11,24 @@ class HomeScreen(generic.ListView):
     paginate_by = 6
 
 
+class DashboardScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'dashboard.html'
+    paginate_by = 6
+
+
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'skincare.html'
+    paginate_by = 6
+
+
+class AboutPage(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'about.html'
     paginate_by = 6
 
 
@@ -83,16 +97,10 @@ class PostLike(View):
         
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-class Favorite(View):
-   def get(self, request):
-        return render(
-            request,
-            "favorite.html",
-        )
    
-class Pin(View):
-    def get(self, request):
-        return render(
-            request,
-            "pin.html",
-        )
+# class Pin(View):
+#     def get(self, request):
+#         return render(
+#             request,
+#             "pin.html",
+#         )
