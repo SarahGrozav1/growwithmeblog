@@ -17,6 +17,11 @@ class DashboardScreen(generic.ListView):
     template_name = 'dashboard.html'
     paginate_by = 6
 
+class ConclusionScreen(generic.ListView):
+    model = Post
+    template_name = 'conclusion.html'
+    paginate_by = 6
+
 
 class PostList(generic.ListView):
     model = Post
