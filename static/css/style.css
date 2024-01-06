@@ -19,6 +19,11 @@ body {
 .card-link {
     font-family: Grandiflora One, sans-serif;
     text-decoration: none;
+    padding: 10px;
+}
+
+.read-more {
+    font-family: Lora, sans-serif;
 }
 
 h5 {
@@ -27,4 +32,21 @@ h5 {
 
 p {
     font-family: Lora, sans-serif;
+}
+
+.card {
+    margin-top: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .women-img {
+        visibility: hidden;
+    }
+
+    .img-2 {
+        margin-top: -700px;
+    }
 }

@@ -1,43 +1,45 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 
-<div class="container">
-    <div class="row">
+<div class="container mt-5">
+    
+    <div class="row text-center">
 
-        <div class="col-lg-6">
-            <div class="bg-transparent mb-3 d-flex justify-content-center">
-                <div class="row">
-                    <a href="#" class="card-link h2 text-white text-uppercase text-center">Sign In</a>
-                    <a href="#" class="card-link h2 text-white text-uppercase text-center">Log In</a>
-                </div>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title text-white text-center">For becoming the best version
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="mb-3">
+                <div class="col-lg-8 col-md-12">
+                <a href="{% url 'account_signup' %}" class="card-link h2 text-white text-uppercase text-center">Sign In</a>
+                <a href="{% url 'account_login' %}" class="card-link h2 text-white text-uppercase text-center">Log In</a>
+            </div>
+            <div class="col-lg-10 col-md-12">
+                <div class="card-body d-flex justify-content-center">
+                    <h5 class="card-title text-white text-center h3 mt-5">For becoming the best version
                         of yourself</h5>
                 </div>
             </div>
-
-            <div class="card bg-transparent  d-flex justify-content-center" style="width: 30rem;">
-                <img class="card-img-bottom" src="{% static 'media/bckg-2.jpg' %}" alt="modest female">
-            </div>
         </div>
 
-        <div class="col-lg-6 d-flex justify-content-center">
-            <div class="card bg-transparent" style="width: 30rem;">
-                <img class="card-img-top" src="{% static 'media/bckg-1.jpg' %}" alt="modest female">
-                <div class="card-body">
-                    <p class="card-text text-white text-center h5">Here you will find posts about skincare, food,
-                        fitness,
-                        parenting, home organization, modest fashion, about
-                        how to make a daily routine and be more productive, about
-                        books I have read and recommend them for your personal growth and about gardening.</p>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="card-link btn btn-light" style="color: rgb(168, 151, 151);">Read More</a>
-                </div>
+        <div class="card" style="width: 30rem;">
+            <img class=" women-img card-img-top" src="{% static 'media/bckg-1.jpg' %}" alt="modest women">
+          </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-center">
+        <div class="card img-2" style="width: 30rem;">
+            <img class="card-img-top img-responsive" src="{% static 'media/bckg-2.jpg' %}" alt="">
+            <div class="card-body">
+                <p class="text text-white text-center h5 p-4">Here you will find posts about skincare, food,
+                    fitness,
+                    parenting, home organization, modest fashion, about
+                    how to make a daily routine and be more productive, about
+                    books I have read and recommend them for your personal growth and about gardening.</p>
+            </div>
+            <div class="card-body">
+                <a href="#" class="read-more card-link btn btn-light" style="color: rgb(168, 151, 151);">Read More</a>
             </div>
         </div>
     </div>
+</div>
 </div>
 {%endblock%}
