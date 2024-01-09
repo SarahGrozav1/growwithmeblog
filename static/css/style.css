@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(168, 151, 151); 
+    background-color: rgb(170, 145, 145); 
 }
 
 .navbar {
@@ -47,6 +47,26 @@ h5 {
 
 .text{
     
+}
+
+/* DASHBOARD */
+
+ul {
+    list-style-type:none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: rgb(141, 99, 99);
+}
+
+.text-upcoming {
+    margin-top: 150px;
+
 }
 
 /* MEDIA QUERY */
