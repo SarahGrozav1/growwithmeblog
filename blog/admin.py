@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, About
 from django_summernote.admin import SummernoteModelAdmin
+from .models import CollaborateForm
 
 # Register your models here.
 @admin.register(Post)
@@ -22,3 +23,16 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
+
+@admin.register(About)
+class AboutAdmin(SummernoteModelAdmin):
+
+    summernote_fields = ('content',)
+
+# COLLABORATE REQUEST FORM
+
+@admin.register(CollaborateForm)
+class CollaborateFormAdmin(admin.ModelAdmin):
+
+    list_display = ('message', 'read',)

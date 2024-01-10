@@ -1,3 +1,18 @@
-<h1>about</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<!-- <a href="{% url 'dashboard' %}">Go back</a> -->
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-12 col-md-8">
+            <h2 class="text-uppercase text-white">{{about.title}}</h2>
+            {{ about.content | safe }}
+        </div>
+        <div class="col-12 col-md-4 text-center">
+            <img src="{% static 'media/about-page.jpg' %}" width="75%">
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

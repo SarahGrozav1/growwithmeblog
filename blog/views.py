@@ -1,19 +1,25 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, CollaborateForm
 from .forms import CommentForm
+from .forms import CollaborateRequestForm
 
 class HomeScreen(generic.ListView):
     model = Post
     template_name = 'index.html'
     paginate_by = 6
 
-
 class DashboardScreen(generic.ListView):
     model = Post
     template_name = 'dashboard.html'
     paginate_by = 6
+
+# class AboutScreen(generic.ListView):
+#     model = Post
+#     template_name = 'about.html'
+#     paginate_by = 6
+
 
 class ConclusionScreen(generic.ListView):
     model = Post
@@ -25,12 +31,6 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'skincare.html'
-    paginate_by = 6
-
-
-class AboutPage(generic.ListView):
-    model = Post
-    template_name = 'about.html'
     paginate_by = 6
 
 
@@ -99,10 +99,29 @@ class PostLike(View):
         
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-   
-# class Pin(View):
-#     def get(self, request):
-#         return render(
-#             request,
-#             "pin.html",
-#         )
+
+def Collaboration(request):
+    """
+    Renders the Collaboration page
+    """
+    
+    collaborate_form = CollaborateRequestForm()
+
+    return render(
+        request,
+        "collaboration.html",
+        {
+            
+            "collaborate_form": collaborate_form
+        },
+    )
+
+
+def about_me(request):
+    """
+    Renders the About page
+    """
+    return render(
+        request,
+        "about.html",
+    )

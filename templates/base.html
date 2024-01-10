@@ -30,12 +30,13 @@
 
 <body class="d-flex flex-column h-100 main-bg">
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
 
-
+<!-- USER AUTHENTICATION -->
+    {% if user.is_authenticated %}
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a href='/' class="navbar-brand">Grow with me</a>
+            <a href='' class="navbar-brand">Grow with me</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,12 +44,15 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase text-black">
 
-                    <!-- USER AUTHENTICATION -->
-
-                    {% if user.is_authenticated %}
+                    
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == dashboard_url %}active{% endif %}" aria-current="page"
-                            href="">Home</a>
+                            href="dashboard">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == collaboration_url %}active{% endif %}" aria-current="page"
+                            href="{{'collaboration'}}">Let's Collaborate</a>
                     </li>
         
                     <li class="nav-item">
@@ -56,10 +60,21 @@
                             href="{% url 'account_logout' %}">Logout</a>
                     </li>
 
+                
                     {% else %}
+
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="container-fluid">
+                            <a href='' class="navbar-brand">Grow with me</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarText">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase text-black">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="">Home</a>
+                            href="{{'/'}}">Home</a>
                     </li>
 
                     <li class="nav-item">

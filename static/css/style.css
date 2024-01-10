@@ -70,7 +70,12 @@ a:hover {
 
 .text-upcoming {
     margin-top: 150px;
+}
 
+
+.collab-text {
+    font-family: Grandiflora One, sans-serif;
+    color: #fff;
 }
 
 /* MEDIA QUERY */
