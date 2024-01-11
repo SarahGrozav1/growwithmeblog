@@ -51,13 +51,14 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
-SIGNUP_REDIRECT_URL = '/dashboard'
+SIGNUP_REDIRECT_URL = '/dashboard/'
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -67,7 +68,8 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

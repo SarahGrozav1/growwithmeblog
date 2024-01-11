@@ -36,7 +36,7 @@
     {% if user.is_authenticated %}
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a href="{{'dashboard'}}" class="navbar-brand">Grow with me</a>
+            <a href="{% url 'blog:dashboard' %}" class="navbar-brand">Grow with me</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,17 +47,17 @@
                     
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == dashboard_url %}active{% endif %}" aria-current="page"
-                            href="{{'dashboard'}}">Home</a>
+                            href="{% url 'blog:dashboard' %}">Home</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page"
-                            href="{{'about'}}">About</a>
+                            href="{% url 'blog:about' %}">About</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == collaboration_url %}active{% endif %}" aria-current="page"
-                            href="{{'collaboration'}}">Let's Collaborate</a>
+                            href="{% url 'blog:collaboration' %}">Let's Collaborate</a>
                     </li>
         
                     <li class="nav-item">

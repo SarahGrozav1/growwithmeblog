@@ -1,20 +1,38 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, CollaborateForm
 from .forms import CommentForm
 from .forms import CollaborateRequestForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+# class HomeScreen(LoginRequiredMixin, generic.ListView):
+#     login_url = '/'
+#     model = Post
+#     template_name = 'index.html'
+
+class HomeScreen(View):
+
+    def get(self, request):
+        if request.user.is_authenticated:
+
+            return redirect(
+                '/dashboard'               
+            )
+        else:
+             return render(
+                request,
+                "index.html",
+            )
 
 
 
-class HomeScreen(generic.ListView):
-    model = Post
-    template_name = 'index.html'
-
-
-class Dashboard(generic.ListView):
+class Dashboard(LoginRequiredMixin, generic.ListView):
+    login_url = '/'
     model = Post
     template_name = 'dashboard.html'
+    
 
 
 class ConclusionScreen(generic.ListView):
