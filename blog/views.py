@@ -5,25 +5,40 @@ from .models import Post, CollaborateForm
 from .forms import CommentForm
 from .forms import CollaborateRequestForm
 
+
+
 class HomeScreen(generic.ListView):
     model = Post
     template_name = 'index.html'
-    paginate_by = 6
 
-class DashboardScreen(generic.ListView):
+
+class Dashboard(generic.ListView):
     model = Post
     template_name = 'dashboard.html'
-    paginate_by = 6
-
-# class AboutScreen(generic.ListView):
-#     model = Post
-#     template_name = 'about.html'
-#     paginate_by = 6
 
 
 class ConclusionScreen(generic.ListView):
     model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'conclusion.html'
+    paginate_by = 1
+
+class BooksScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'books.html'
+    paginate_by = 6
+
+class ParentingScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'parenting.html'
+    paginate_by = 6
+
+class FashionScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'parenting.html'
     paginate_by = 6
 
 
@@ -32,6 +47,7 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'skincare.html'
     paginate_by = 6
+
 
 
 class PostDetail(View):

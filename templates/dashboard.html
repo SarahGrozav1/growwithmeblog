@@ -6,36 +6,22 @@
 <section id="dashboard-home">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <div class="card">
-                    <img class="dash-img card-img-top" src="{% static 'media/img1.jpg' %}" alt="modest women">
-                </div>
-                <h4 class="text-white text-uppercase fw-bold my-4">About Me</h4>
-                <p class="about-me text-white mb-5  h5">Personal growth is a lifelong process of
-                    self-exploration, self-improvement, and self-transformation.
-                    It encompasses the continuous development of one's knowledge, skills, and</p>
-                <a href="{{'about'}}" class="dash-read-btn read-more card-link btn btn-outline-light px-5 py-3">Read More</a>
-            </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <h1 class="text-center text-uppercase text-white p-5">Menu</h1>
                 <hr class="text-white">
                 <ul class="text-center text-white h3 lh-lg mt-5">
                     <li>
-                        <a href="" class="text-uppercase">Book Recommendation</a>
+                        <a href="{{'books'}}" class="text-uppercase">Book Recommendation</a>
                     </li>
                     <li>
-                        <a href="" class="text-uppercase">Modest Fashion</a>
+                        <a href="fashion" class="text-uppercase">Modest Fashion</a>
                     </li>
                     <li>
                         <a href="skincare" class="text-uppercase">Skincare</a>
                     </li>
                     <li>
-                        <a href="" class="text-uppercase">Parenting</a>
-                    </li>
-                    <li>
-                        <h3 class="text-upcoming">Upcoming New Section</h3>
-                        <h3>In 01.07. 2024</h3>
+                        <a href="{{'parenting'}}" class="text-uppercase">Parenting</a>
                     </li>
                 </ul>
             </div>
