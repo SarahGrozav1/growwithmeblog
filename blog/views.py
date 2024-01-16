@@ -35,14 +35,14 @@ class ConclusionScreen(generic.ListView):
     template_name = 'conclusion.html'
     paginate_by = 1
 
-# Category tells me the id of the categories 
+# Category tells me the id of the categorie I want for this class witch is books
 class BooksScreen(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1, category=2).order_by('-created_on')
     template_name = 'books.html'
     paginate_by = 6
 
-
+# AN EXAMPLE OF A FUNCTION - IT WILL GIVE ME THE SAME AS THE ONE WITH THE CLASS FOR BOOKS
 # def BooksScreen(request):
 #     post = Post.objects.filter(category=2)
 
@@ -60,18 +60,16 @@ class FashionScreen(generic.ListView):
     template_name = 'fashion.html'
     paginate_by = 6
 
-
-class ParentingScreen(generic.ListView):
-    model = Post
-    queryset = Post.objects.filter(status=5, category=5).order_by('-created_on')
-    template_name = 'parenting.html'
-    paginate_by = 6
-
-
 class SkincareScreen(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1, category=4).order_by('-created_on')
     template_name = 'skincare.html'
+    paginate_by = 6
+
+class ParentingScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1, category=5).order_by('-created_on')
+    template_name = 'parenting.html'
     paginate_by = 6
 
 
@@ -138,7 +136,7 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
         
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
 
 
 def Collaboration(request):

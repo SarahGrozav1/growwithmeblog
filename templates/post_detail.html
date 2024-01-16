@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+
 {% load crispy_forms_tags %}
 
 <div class="masthead">
@@ -36,12 +39,12 @@
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'blog:post_like' post.slug %}" method="POST">
                                 {% csrf_token %} 
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"></button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}

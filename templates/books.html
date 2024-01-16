@@ -21,20 +21,19 @@
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
+                                    <p class="author text-white">Author: {{ post.author }}</p>
                                 </div>
                             </div>
                             <ul>
-                                <!-- <li>{{ post.category }}</li> -->
-                                {% for category in categories %}
-                                    <li>{{ category.nume }}</li>
-                                {% empty %}
-                                    <li>Nicio categorie găsită.</li>
-                                {% endfor %}
+                                <li>{{ post.category }}</li>
+                                <a href="{% url 'blog:post_detail' post.slug %}" class="post-link">
+                                    <h2 class="card-title">{{ post.title }}</h2>
+                                    <p class="card-text">{{ post.excerpt }}</p>
+                                </a>
                             </ul>
                         
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
+                            <p class="card-text h6 text-white">{{ post.created_on}} <i class="far fa-heart"></i>
                                 {{ post.number_of_likes }}</p>
                         </div>
                     </div>
