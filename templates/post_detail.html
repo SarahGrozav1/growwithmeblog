@@ -9,11 +9,11 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">{{ post.title }}</h1>
+                <h1 class="post-title text-white text-uppercase mt-5">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+                <p class="post-subtitle text-white">{{ post.author }} | {{ post.created_on }}</p>
             </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
+            <div class="d-none d-md-block col-md-6 masthead-image mt-5">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="{% static 'media/blog-post.jpg' %}" width="100%" alt="placeholder">
@@ -27,11 +27,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
+        <div class="col card mb-4  mt-3 left top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">
+                <p class="card-text">
                     {{ post.content | safe }}
                 </p>
                 <div class="row">
@@ -42,7 +42,7 @@
                             <form class="d-inline" action="{% url 'blog:post_like' post.slug %}" method="POST">
                                 {% csrf_token %} 
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></button>
                                 {% else %}
                                 <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i class="far fa-heart"></i></button>
                                 {% endif %}
@@ -67,20 +67,20 @@
     </div>
     <div class="row">
         <div class="col">
-            <hr>
+            <hr class="text-white">
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+            <h3 class="text-white">Comments:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
+                    <p class="font-weight-bold font-weight-light">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
+                        <span class=" font-weight-normal font-weight-light">
                             <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span> wrote:
@@ -94,7 +94,7 @@
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+                
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
@@ -102,12 +102,12 @@
                 {% else %}
                 {% if user.is_authenticated %}
 
-                <h3>Leave a comment:</h3>
+                <h3 class="text-white">Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
+                <form method="post" style="margin-top: 1.3em;" class="text-muted">
                     {{ comment_form }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-signup btn-lg btn btn-outline-light py-3 px-5 my-3">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}
