@@ -1,6 +1,6 @@
 from .models import Comment
 from django import forms
-from .models import CollaborateForm
+from .models import CollaborateRequest
 from django import forms
 
 class CommentForm(forms.ModelForm):
@@ -11,7 +11,10 @@ class CommentForm(forms.ModelForm):
 
 # COLLABORATE REQUEST FORM
 
-class CollaborateRequestForm(forms.ModelForm):
+class CollaborateForm(forms.ModelForm):
     class Meta:
-        model = CollaborateForm
+        model = CollaborateRequest
         fields = ('name', 'email', 'message')
+        # widgets = {
+        #   'email': forms.EmailInput(attrs={'class': 'primary'}),
+        # }

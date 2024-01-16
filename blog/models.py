@@ -1,13 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils import timezone
 
 STATUS = ((0, "Draft"), (1, "Published"))
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null = True)
+    pub_date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
@@ -44,7 +54,7 @@ class Comment(models.Model):
 
 # COLLABORATE REQUEST FORM
 
-class CollaborateForm(models.Model):
+class CollaborateRequest(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()
@@ -61,4 +71,7 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
     

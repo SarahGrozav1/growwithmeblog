@@ -1,17 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, CollaborateForm
+from .models import Post, CollaborateRequest
 from .forms import CommentForm
-from .forms import CollaborateRequestForm
+from .forms import CollaborateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
-
-# class HomeScreen(LoginRequiredMixin, generic.ListView):
-#     login_url = '/'
-#     model = Post
-#     template_name = 'index.html'
-
+# If user is authenticated to redirect him to dashboard else to stay in index
 class HomeScreen(View):
 
     def get(self, request):
@@ -26,14 +22,12 @@ class HomeScreen(View):
                 "index.html",
             )
 
-
-
+# LoginRequiredMixin is to verifie if user is authenticated
 class Dashboard(LoginRequiredMixin, generic.ListView):
     login_url = '/'
     model = Post
     template_name = 'dashboard.html'
     
-
 
 class ConclusionScreen(generic.ListView):
     model = Post
@@ -41,31 +35,44 @@ class ConclusionScreen(generic.ListView):
     template_name = 'conclusion.html'
     paginate_by = 1
 
+# Category tells me the id of the categories 
 class BooksScreen(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1, category=2).order_by('-created_on')
     template_name = 'books.html'
     paginate_by = 6
 
-class ParentingScreen(generic.ListView):
-    model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'parenting.html'
-    paginate_by = 6
+
+# def BooksScreen(request):
+#     post = Post.objects.filter(category=2)
+
+#     return render(
+#         request, 
+#         'books.html', 
+#         {
+#             "post_list": post
+#         }
+#     )
 
 class FashionScreen(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1, category=3).order_by('-created_on')
+    template_name = 'fashion.html'
+    paginate_by = 6
+
+
+class ParentingScreen(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=5, category=5).order_by('-created_on')
     template_name = 'parenting.html'
     paginate_by = 6
 
 
-class PostList(generic.ListView):
+class SkincareScreen(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1, category=4).order_by('-created_on')
     template_name = 'skincare.html'
     paginate_by = 6
-
 
 
 class PostDetail(View):
@@ -138,8 +145,14 @@ def Collaboration(request):
     """
     Renders the Collaboration page
     """
-    
-    collaborate_form = CollaborateRequestForm()
+    if request.method == "POST":
+        collaborate_form = CollaborateForm(data=request.POST)
+        if collaborate_form.is_valid():
+            collaborate_form.save()
+            messages.add_message(request, messages.SUCCESS, "Collaboration request received! I will respond within 3 working days.")
+            collaborate_form = CollaborateForm()
+    else:
+        collaborate_form = CollaborateForm()
 
     return render(
         request,

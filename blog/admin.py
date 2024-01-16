@@ -1,18 +1,28 @@
 from django.contrib import admin
-from .models import Post, Comment, About
+from .models import Post, Comment, About, Category
 from django_summernote.admin import SummernoteModelAdmin
-from .models import CollaborateForm
+from .models import CollaborateRequest
 
 # Register your models here.
 
+# admin.site.register(Category)
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description')
+    search_fields = ['name', 'description']
+    list_filter = ('name', 'description')
+    readonly_fields = ('id',)
+
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-
-    list_display = ('title', 'slug', 'status', 'created_on')
+    list_display = ('title', 'slug', 'category', 'status', 'created_on')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
     summernote_fields = ('content')
+    
 
 
 @admin.register(Comment)
@@ -34,7 +44,10 @@ class AboutAdmin(SummernoteModelAdmin):
 
 # COLLABORATE REQUEST FORM
 
-@admin.register(CollaborateForm)
-class CollaborateFormAdmin(admin.ModelAdmin):
+@admin.register(CollaborateRequest)
+class CollaborateRequestAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'message', 'read')
+    search_fields = ['name', 'email']
+    list_filter = ('name', 'email')
 
-    list_display = ('message', 'read',)
+
