@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, CollaborateRequest
+from .models import Post, CollaborateRequest, Comment
 from .forms import CommentForm
 from .forms import CollaborateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,7 +28,7 @@ class Dashboard(LoginRequiredMixin, generic.ListView):
     model = Post
     template_name = 'dashboard.html'
     
-
+# Conclusion Page
 class ConclusionScreen(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -78,7 +78,7 @@ class PostDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("created_on")
+        comments = post.comments.order_by("created_on")
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -138,6 +138,44 @@ class PostLike(View):
         
         return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
 
+def comment_edit(request, slug, comment_id):
+    """
+    view to edit comments
+    """
+    if request.method == "POST":
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment_form = CommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.email == request.user.email:
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            
+            comment.approved = False
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+
+    return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
+
+def comment_delete(request, slug, comment_id):
+    """
+    view to delete comments
+    """
+
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.email == request.user.email:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Comment Deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
+
 
 def Collaboration(request):
     """
@@ -148,7 +186,7 @@ def Collaboration(request):
         if collaborate_form.is_valid():
             collaborate_form.save()
             messages.add_message(request, messages.SUCCESS, "Collaboration request received! I will respond within 3 working days.")
-            collaborate_form = CollaborateForm()
+            return HttpResponseRedirect(reverse('blog:collaboration'))
     else:
         collaborate_form = CollaborateForm()
 

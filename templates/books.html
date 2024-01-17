@@ -3,10 +3,10 @@
 
 {% block content %}
 
+<!-- Books Page -->
 <div class="container-fluid">
     <div class="row">
 
-        <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
@@ -31,7 +31,7 @@
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
                             </ul>
-                        
+
                             <hr class="text-white">
                             <p class="card-text h6 text-white">{{ post.created_on}} <i class="far fa-heart"></i>
                                 {{ post.number_of_likes }}</p>

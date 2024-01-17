@@ -3,28 +3,30 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+<!-- Collaboration form -->
 <div class="container">
     <div class="row text-center">
 
         <div class="col-lg-12 col-md-12 my-5">
             <h2 class="text-white text-uppercase">Let's collaborate!</h2>
-            <p class="collab-text lh-base h4 p-5">Join us in creating a captivating blog page. We're seeking talented writers,
+            <p class="collab-text lh-base h4 p-5">Join us in creating a captivating blog page. We're seeking talented
+                writers,
                 photographers, and editors to collaborate and share their unique perspectives.
                 Let's come together and create engaging content that inspires and informs our
                 readers. Let's make a mark in the blogosphere!</p>
         </div>
 
-<div class="container">
-    <div class="row">
+        <div class="container">
+            <div class="row">
 
-        <div class="col-lg-12 mb-md-0 mb-5 d-flex justify-content-center">
-            <form method="post" class="h5 fw-light">
-                {{ collaborate_form | crispy }}
-                {% csrf_token %}             
-                <button class="btn btn-outline-light py-3 px-5 my-5 "
-                  type="submit">Submit</button>
-              </form>
+                <div class="col-lg-12 mb-md-0 mb-5 d-flex justify-content-center">
+                    <form method="post" class="h5 fw-light">
+                        {{ collaborate_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn btn-outline-light py-3 px-5 my-5 " type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-{% endblock content %}
+        {% endblock content %}

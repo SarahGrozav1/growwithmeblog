@@ -13,6 +13,9 @@ urlpatterns = [
     path('dashboard/parenting/', views.ParentingScreen.as_view(), name='parenting'),
     path('dashboard/fashion/', views.FashionScreen.as_view(), name='fashion'),
     path('dashboard/skincare/', views.SkincareScreen.as_view(), name='skincare'),
+    path('blog/<slug:slug>/edit_comment/<int:comment_id>',views.comment_edit, name='comment_edit'),
+    path('blog/<slug:slug>/delete_comment/<int:comment_id>',views.comment_delete, name='comment_delete'),
     path('blog/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
+    
 ]

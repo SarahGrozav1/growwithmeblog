@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -7,14 +7,14 @@
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
+
             <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title text-white text-uppercase mt-5">{{ post.title }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle text-white">{{ post.author }} | {{ post.created_on }}</p>
             </div>
+
+<!-- Image and placeholder -->
             <div class="d-none d-md-block col-md-6 masthead-image mt-5">
-                <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="{% static 'media/blog-post.jpg' %}" width="100%" alt="placeholder">
                 {% else %}
@@ -25,12 +25,11 @@
     </div>
 </div>
 
+<!-- Content of the post's -->
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left top">
             <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text">
                     {{ post.content | safe }}
                 </p>
@@ -38,26 +37,29 @@
 
                     <div class="col-1">
                         <strong>
+                            <!-- Cheking if user is authenticated | he can give likes to post's -->
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'blog:post_like' post.slug %}" method="POST">
-                                {% csrf_token %} 
+                                {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i
+                                        class="fa-solid fa-heart" style="color: #ffffff;"></i></button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn"><i
+                                        class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <span class="text-secondary">{{ post.number_of_likes }} </span>
+                            <!-- The number of likes -->
+                            <span class="text-secondary">{{ post.number_of_likes }} </span>
                         </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
+                            <!-- Total_comments variable -->
                             {{ total_comments }}</strong>
                         {% endwith %}
                     </div>
@@ -74,27 +76,47 @@
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3 class="text-white">Comments:</h3>
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                
                 {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
+                {% if comment.email == user.email or comment.email != user.email and comment.approved %}
+                <!-- Cheking if comment is not approved to have text-muted until is approved -->
+                <div class="comments {% if not comment.approved %} text-muted {% endif %}" style="padding: 10px;">
                     <p class="font-weight-bold font-weight-light">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        <!-- The commenter's name goes here -->
                         {{ comment.name }}
-                        <span class=" font-weight-normal font-weight-light">
+                        <span class=" font-weight-normal font-weight-light
+                                {% if not comment.approved %} text-muted {% endif %}
+                                ">
                             <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
+                    <!-- The body of the comment -->
                     {{ comment.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
+
+                <!-- Displaying a message if comment is awaiting approval, with red text -->
+                {% if not comment.approved and comment.email == user.email %}
+                <p class="approval text-danger">This comment is awaiting approval</p>
+                {% endif %}
+
+                <!-- If user want to delete his comment to have a button for delete only his comment not other users comment -->
+                {% if user.is_authenticated and comment.email == user.email %}
+                <button class="btn btn-delete btn-outline-light py-3 px-5 my-3"
+                    comment_id="{{ comment.id }}">Delete</button>
+                {% endif %}
+                <!-- If user want to edit his comment to have a button for edit only his comment not other users comment -->
+                {% if user.is_authenticated and comment.email == user.email %}
+                <button class="btn btn-edit btn-outline-light py-3 px-5 my-3" comment_id="{{ comment.id }}"
+                    comment_text="{{comment.body}}">Edit</button>
+                {% endif %}
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                
+
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
@@ -103,11 +125,13 @@
                 {% if user.is_authenticated %}
 
                 <h3 class="text-white">Leave a comment:</h3>
+                <!-- Posting as the name of the user -->
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;" class="text-muted">
+                <form method="post" style="margin-top: 1.3em;" class="text-muted" id="commentForm">
                     {{ comment_form }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg btn btn-outline-light py-3 px-5 my-3">Submit</button>
+                    <button id="submitButton" type="submit"
+                        class="btn btn-signup btn-lg btn btn-outline-light py-3 px-5 my-3">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}
@@ -116,4 +140,29 @@
     </div>
 </div>
 
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close btn-outline-light py-3 px-5" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
