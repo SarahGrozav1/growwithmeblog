@@ -137,7 +137,8 @@ class PostLike(View):
             post.likes.add(request.user)
         
         return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
-
+    
+# Function for edit button
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -161,6 +162,7 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
 
+# Function for delete button
 def comment_delete(request, slug, comment_id):
     """
     view to delete comments
