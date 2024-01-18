@@ -165,11 +165,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dkt1lgxpj',
-    'API_KEY': '817946484375311',
-    'API_SECRET': '4kW-Sx9QLyDhSL_OaQu3-nTLu1M'
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dkt1lgxpj',
+#     'API_KEY': '817946484375311',
+#     'API_SECRET': '4kW-Sx9QLyDhSL_OaQu3-nTLu1M'
+# }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
