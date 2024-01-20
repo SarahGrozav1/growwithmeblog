@@ -488,7 +488,7 @@ Project code structure is organized and constructed using Django Framework
 
 #### Register Page
 
-
+- This feature is presenting register form wich is a part of django-allauth
 - This is register page where user can register
 - It consists of navbar, hero-section and a footer
 
@@ -500,7 +500,7 @@ Project code structure is organized and constructed using Django Framework
 
 #### Login Page
 
-
+- This feature is presenting login form wich is a part of django-allauth
 - This is login page where user can login if he already register once
 - It consists of navbar, hero-section and a footer
 
@@ -557,8 +557,8 @@ Project code structure is organized and constructed using Django Framework
 
 #### Logout Page
 
-
-- This is login page where user can login if he already register once
+- This feature is presenting logout form wich is a part of django-allauth
+- This is logout page where user can logout
 - It consists of navbar, hero-section and a footer
 
 <details><summary>See Login Page</summary>
@@ -678,6 +678,8 @@ Project code structure is organized and constructed using Django Framework
 ![Parenting Detail page](static/media/documents/mobile-parenting-post-detail.png)
 
 </details>
+
+
 
 
 
