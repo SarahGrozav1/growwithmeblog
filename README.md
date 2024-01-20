@@ -420,7 +420,272 @@ Project code structure is organized and constructed using Django Framework
 |  description  | description  | TextField   | 
  |                                                |
 
- 
+ ## Features
+
+---
+
+### Implemented Features
+
+#### Navbar
+
+- Navbar consists of Logo and is displayed in all pages for easy navigation of website
+- An unauthenticated user can see additional functions as follows:
+   - Navbar with home page(Index page), register page and login page
+
+- Authenticated user can see additional functions as follows:
+  - Navbar with home page(Dashboard page), about page, collaboration page and signout page 
+- Navbar is fully responsive and on smaller screen sizes it coverts into a 'Hamburger menu'
+
+  - 
+
+<details><summary>See Navbar</summary>
+
+![Navbar before login](static/media/documents/navbar.png)
+![Navbar after login](static/media/documents/navbar-dashboard.png)
+
+</details>
+
+#### Footer
+
+- Footer consists of social media links and a copyrights message
+
+<details><summary>See Footer</summary>
+
+![Footer](static/media/documents/footer.png)
+
+</details>
+
+
+#### Index Page
+
+
+- This is the first contact with user when user opens the website
+- It consists of navbar, hero-section and a footer
+- This page have a title, some nice images, a short text and a button that redirects the user to conclusion page
+
+<details><summary>See Index page</summary>
+
+![Index page](static/media/documents/index.png)
+![Index page](static/media/documents/mobile-index.png)
+
+</details>
+
+
+#### Conclusion Page
+
+
+- This is conclusion page where user can know more about this blog page 
+- It consists of navbar, hero-section and a footer
+- At the end of this page is a button 'Go Back' that redirects the user to index page
+
+<details><summary>See Conclusion Page</summary>
+
+![Conclusion page](static/media/documents/conclusion.png)
+![Conclusion page](static/media/documents/mobile-conclusion.png)
+
+</details>
+
+
+#### Register Page
+
+
+- This is register page where user can register
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Register Page</summary>
+
+![Register page](static/media/documents/signin.png)
+
+</details>
+
+#### Login Page
+
+
+- This is login page where user can login if he already register once
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Login Page</summary>
+
+![Login page](static/media/documents/login.png)
+
+
+</details>
+
+
+#### Dashboard Page
+
+
+- This is the first contact with user when user register or log in
+- It consists of navbar, hero-section and a footer
+- This page have a menu with four categories: Books Recommendation, Modest Fashion, Skincare and Parenting where user can find easier post's about what they want to read
+
+<details><summary>See Dashboard page</summary>
+
+![Dashboard page](static/media/documents/dashboard.png)
+![Dashboard page](static/media/documents/mobile-dashboard.png)
+
+</details>
+
+
+#### About Page
+
+
+- This is the about page and the story is of site owner and also an image is added to this section 
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See About page</summary>
+
+![About page](static/media/documents/about.png)
+![About page](static/media/documents/mobile-about.png)
+
+</details>
+
+
+#### Collaboration Page
+
+
+- This is the collaboration page where user can send a collaboration form to the post  owner
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Collaboration page</summary>
+
+![Collaboration page](static/media/documents/collaboration.png)
+![Collaboration page](static/media/documents/mobile-collaboration.png)
+
+</details>
+
+
+#### Logout Page
+
+
+- This is login page where user can login if he already register once
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Login Page</summary>
+
+![Login page](static/media/documents/logout.png)
+
+</details>
+
+
+#### Books Page
+
+
+- This is the books recommendation page for personal growth
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Books page</summary>
+
+![Books page](static/media/documents/books.png)
+![Books page](static/media/documents/mobile-books.png)
+
+</details>
+
+
+#### Books Detail Page
+
+
+- This is the post detail page where user can read the post he selected to read
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Books Detail page</summary>
+
+![Books Detail page](static/media/documents/post-detail.png)
+![Books Detail page](static/media/documents/mobile-books-post.png)
+
+</details>
+
+
+#### Modest Fashion Page
+
+
+- This is the modest fashion page witch contains post's about modest fashion
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Modest Fashion page</summary>
+
+![Modest Fashion page](static/media/documents/modest-fashion.png)
+![Modest Fashion page](static/media/documents/mobile-fashion.png)
+
+</details>
+
+
+#### Modest Fashion Detail Page
+
+
+- This is the post detail page where user can read the post he selected to read
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Modest Fashion Detail page</summary>
+
+![Fashion Detail page](static/media/documents/fashion-post-detail.png)
+![fashion Detail page](static/media/documents/mobile-post-detail-fashion.png)
+
+</details>
+
+
+#### Skincare Page
+
+
+- This is the skincare page witch contains post's about skincare
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Skincare page</summary>
+
+![Skincare page](static/media/documents/skincare.png)
+![Skincare page](static/media/documents/mobile-skincare.png)
+
+</details>
+
+
+#### Skincare Detail Page
+
+
+- This is the post detail page where user can read the post he selected to read
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Skincare Detail page</summary>
+
+![Skincare Detail page](static/media/documents/skincare-post-detail.png)
+![Skincare Detail page](static/media/documents/mobile-skincare-post-detail.png)
+
+</details>
+
+
+#### Parenting Page
+
+
+- This is the Parenting page witch contains post's about parenting
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Parenting page</summary>
+
+![Parenting page](static/media/documents/parenting.png)
+![Parenting page](static/media/documents/mobile-parenting.png)
+
+</details>
+
+
+#### Parenting Detail Page
+
+
+- This is the post detail page where user can read the post he selected to read
+- It consists of navbar, hero-section and a footer
+
+<details><summary>See Parenting Detail page</summary>
+
+![Parenting Detail page](static/media/documents/parenting-post-detail.png)
+![Parenting Detail page](static/media/documents/mobile-parenting-post-detail.png)
+
+</details>
+
+
+
+
+
+
+
+
 
 
 
