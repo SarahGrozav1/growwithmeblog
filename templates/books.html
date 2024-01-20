@@ -16,7 +16,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="{% static 'media/blog-post.jpg' %}">
+                                    src="{% static 'media/blog-post.jpg' %}" alt="book with flowers">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}">
                                 {% endif %}
@@ -26,11 +26,12 @@
                             </div>
                             <ul>
                                 <li>{{ post.category }}</li>
+                            </ul>
                                 <a href="{% url 'blog:post_detail' post.slug %}" class="post-link">
                                     <h2 class="card-title">{{ post.title }}</h2>
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
-                            </ul>
+                            
 
                             <hr class="text-white">
                             <p class="card-text h6 text-white">{{ post.created_on}} <i class="far fa-heart"></i>

@@ -682,11 +682,86 @@ Project code structure is organized and constructed using Django Framework
 
 #### Error 404 page
 
+- This is the 404 error page where user is announce that the page he is looking for doesnt exist
+- Have a button witch redirects user to home page
+- It consists of navbar, hero-section and a footer
+
 <details><summary>See 404 page</summary>
 
-![404 Error Page](documentation/humanitas-pages/404-page.png)
+![404 Error Page](static/media/documents/404error.png)
+![404 Error Page](static/media/documents/mobile-404error.png)
 
 </details>
+
+### Features to be Implemented
+
+- Adding more design to the blog
+- Add more categories to the menu
+- Add two tools for blog in menu
+- Add design for admin page
+
+---
+
+## Validation
+
+### CSS
+
+- [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/)was used to validate the css in the project. Validator with no errors.
+
+<details><summary> CSS </summary>
+<img src="static/media/documents/css-validator.png">
+</details>
+
+### Html
+
+- [WC3 Validator](https://validator.w3.org/) was used to validate the html in the project
+
+- Note : all info on validator pages are related with using cloudinary template tags for rendering user uploaded images and there for trailing slash cant be removed
+
+<details><summary>Base</summary>
+<img src="static/media/documents/base-val.png">
+</details>
+
+<details><summary>Index</summary>
+<img src="static/media/documents/index-val.png">
+</details>
+
+<details><summary>Conclusion</summary>
+<img src="static/media/documents/conclusion-val.png">
+</details>
+
+<details><summary>Dashboard</summary>
+<img src="static/media/documents/dashboard-val.png">
+</details>
+
+<details><summary>About</summary>
+<img src="static/media/documents/about-val.png">
+</details>
+
+<details><summary>Collaboration</summary>
+<img src="static/media/documents/collaboration-val.png">
+</details>
+
+<details><summary>Books</summary>
+<img src="static/media/documents/books-val.png">
+</details>
+
+<details><summary>Fashion</summary>
+<img src="static/media/documents/fashion-val.png">
+</details>
+
+<details><summary>Skincare</summary>
+<img src="static/media/documents/skincare-val.png">
+</details>
+
+<details><summary>Parenting</summary>
+<img src="static/media/documents/parenting-val.png">
+</details>
+
+<details><summary>404 Page</summary>
+<img src="static/media/documents/404error-val.png">
+</details>
+
 
 
 

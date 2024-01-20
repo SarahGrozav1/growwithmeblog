@@ -16,7 +16,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="{% static 'media/fashion.jpg' %}">
+                                    src="{% static 'media/fashion.jpg' %}" alt="a bag with clothes on bed">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}">
                                 {% endif %}
