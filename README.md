@@ -680,6 +680,15 @@ Project code structure is organized and constructed using Django Framework
 </details>
 
 
+#### Error 404 page
+
+<details><summary>See 404 page</summary>
+
+![404 Error Page](documentation/humanitas-pages/404-page.png)
+
+</details>
+
+
 
 
 

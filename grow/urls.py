@@ -22,3 +22,5 @@ urlpatterns = [
     path('', include('blog.urls'), name='blog_urls'),
     path('', include('allauth.urls')),
 ]
+
+handler404 = 'blog.views.error_page'

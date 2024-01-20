@@ -210,3 +210,6 @@ def about_me(request):
         request,
         "about.html",
     )
+    
+def error_page(request, exception):
+    return render(request, '404error.html')
