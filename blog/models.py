@@ -6,6 +6,7 @@ from django.utils import timezone
 STATUS = ((0, "Draft"), (1, "Published"))
 # Create your models here.
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -13,12 +14,14 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null = True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null=True)
     pub_date = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="blog_posts")
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
@@ -50,9 +53,10 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}" 
+        return f"Comment {self.body} by {self.name}"
 
 # COLLABORATE REQUEST FORM
+
 
 class CollaborateRequest(models.Model):
     name = models.CharField(max_length=200)
@@ -71,7 +75,3 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-    

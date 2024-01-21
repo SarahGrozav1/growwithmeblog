@@ -763,6 +763,360 @@ Project code structure is organized and constructed using Django Framework
 </details>
 
 
+### Python
+
+- [CI Python Linter](https://pep8ci.herokuapp.com/) was used for validation of python files.
+- NOTE: The validation was done to all custom python files written by me. Settings.py was excluded because it contains important data which is longer than 79 lines and cannot be changed.
+
+##### Grow Project
+
+<details><summary>Urls</summary>
+<img src="static/media/documents/urls-grow.png">
+</details>
+
+##### Blog App
+
+<details><summary>Views</summary>
+<img src="static/media/documents/views-val.png">
+</details>
+
+<details><summary>Urls</summary>
+<img src="static/media/documents/urls-blog.png">
+</details>
+
+<details><summary>Models</summary>
+<img src="static/media/documents/models-val.png">
+</details>
+
+<details><summary>Forms</summary>
+<img src="static/media/documents/forms-val.png">
+</details>
+
+<details><summary>Admin</summary>
+<img src="static/media/documents/admin-val.png">
+</details>
+
+### JS 
+
+
+- No errors were found when passing through the official [JShint Validator](https://jshint.com/)
+- Warnings were provided regarding one undefined variable: "Bootstrap" which is an external library used
+
+
+<details><summary>JS Validator</summary>
+<img src="static/media/documents/js-val.png">
+</details>
+
+
+### Lighthouse
+
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for performance, accessibility, progressive web apps, SEO analysis of the project code here are the results:
+
+- Note: Lighthouse results of testing the project may be inconsistent due to the functionality of user-uploaded images,Hosting project on Heroku may affected the results (server response time, caching, and network latency). Also additional external libraries reduce the response of the website. I will try improve in further projects to acheive better results and avoid "Bad practices".
+
+
+<details><summary>Index</summary>
+<img src="static/media/documents/lighthouse.png">
+</details>
+
+<details><summary>Dashboard</summary>
+<img src="static/media/documents/dashboard-lighthouse.png">
+</details>
+
+<details><summary>Post</summary>
+<img src="static/media/documents/post-lighthouse.png">
+</details>
+
+<details><summary>Post Detail</summary>
+<img src="static/media/documents/post-detail-lighthouse.png">
+</details>
+
+<details><summary>About</summary>
+<img src="static/media/documents/about-lighthouse.png">
+</details>
+
+<details><summary>Collaboration</summary>
+<img src="static/media/documents/collaboration-lighthouse.png">
+</details>
+
+--
+
+# TESTING
+
+## Table of Contents
+
+1. [Manual Testing](#manual-testing-of-user-stories)
+2. [Bugs](#bugs)
+3. [Unfixed Bugs](#unfixed-bugs)
+
+### Manual testing of user stories
+
+1. As a Site User I want the navigation to be user-friendly so that I'm able to easily navigate through the app content.
+
+| **Step**                            | **Expected Result**                       | **Actual Result** |
+| ----------------------------------- | ----------------------------------------- | ----------------- |
+| Open website                        | index page loads                          | Work as expected  |
+| User click on a Link in the nav bar | User taken to desired part of the web app | Works as expected |
+
+--
+
+2. As a Site User I want to know info on what the app is about so that I can use its functionality for mutual benefit
+
+| **Step**                                | **Expected Result**                     | **Actual Result** |
+| --------------------------------------- | --------------------------------------- | ----------------- |
+| Open website                            | index page loads                         | Work as expected  |
+| User scrolls through the index page      | Website mission and vision is presented | Work as expected  |
+| User click on conclusion link in the index button | user taken to conclusion page                | Works as expected |
+| User scrolls through the about page     | About page are presented            | Work as expected  |
+
+--
+
+3. As a Site User I can be able to register, login and logout from the website so that I can have a safe environment to work with
+
+| **Step**                                         | **Expected Result**                  | **Actual Result** |
+| ------------------------------------------------ | ------------------------------------ | ----------------- |
+| User navigates to a "Register" link in a nav bar | Loads register form                  | Work as expected  |
+| User fills the form correctly                    | Home page loads with success message | Work as expected  |
+| User navigates to a "Login" link in a nav bar    | Loads Login form                     | Work as expected  |
+| User fills the form correctly                    | Home page loads with success message | Work as expected  |
+| User navigates to a "Logout" link in a nav bar   | Loads Logout confirm page            | Work as expected  |
+| User click on logout button                      | Home page loads with success message | Work as expected  |
+
+
+4. As a Site User I can be able to send message so that I can communicate with the website owner
+
+| **Step**                                        | **Expected Result**                                      | **Actual Result** |
+| ----------------------------------------------- | -------------------------------------------------------- | ----------------- |
+| User navigates to a "Collaboration" link in a nav bar | Loads let's collaborate  form                                    | Work as expected  |
+| User fills the form correctly                   | If user authorised: dashboard page loads with success message | Work as expected  |
+
+--
+
+5. As a Site User I can view the post's page so that I can view the post's
+
+| **Step**                                        | **Expected Result**                       | **Actual Result** |
+| ----------------------------------------------- | ----------------------------------------- | ----------------- |
+| User navigates to a "Dashboard" page in a menu where are categories | Opens a categorie with post's | Work as expected  |
+| User navigates to post     | The "post detail" Page opens              | Work as expected  |
+
+--
+
+6. As a Site User I can comment on the post so that I can be involved in conversation
+
+| **Step**                                          | **Expected Result**                                          | **Actual Result** |
+| ------------------------------------------------- | ------------------------------------------------------------ | ----------------- |
+| User navigates to "Dashboard" page in a menu where are categories | Opens a categorie with post's | Work as expected  |
+| User navigates to post     | The "post detail" Page opens              | Work as expected  |
+| User write a comment and submit                   | The comment is added in comment section with success message | Works as expected |
+
+--
+
+7. As a Site User I can delete or edit comments so that I can delete or edit unwanted comments in my story and also my comments in other's stories
+
+| **Step**                                                 | **Expected Result**                          | **Actual Result**  |
+| -------------------------------------------------------- | -------------------------------------------- | ------------------ |
+| User navigates to "Dashboard" page in a menu where are categories | Opens a categorie with post's | Work as expected  |
+| User navigates to post     | The "post detail" Page opens              | Work as expected  |
+| User write a comment and submit                   | The comment is added in comment section with success message | Works as expected |
+| User clicks on delete button bellow to their comment         | The comment is deleted with success message  | Work as expected   |
+| User clicks on edit button bellow to their comments |  The comment is put in textarea |  Works as expected |
+| User edit their comments and click on update button |  The comment is edited with success message |  Works as expected |
+
+--
+
+8. As a Site User I can add like so that I can like a post
+
+| **Step**                                                      | **Expected Result**                                     | **Actual Result** |
+| ------------------------------------------------------------- | ------------------------------------------------------- | ----------------- |
+| User navigates to "Dashboard" page in a menu where are categories | Opens a categorie with post's | Work as expected  |
+| User navigates to post     | The "post detail" Page opens              | Work as expected  |
+| User clicks on like icon bellow the post        | The like icons is filled with white color  | Work as expected   |
+
+--
+
+### As a site Owner
+
+9. As a Site Owner I would like that each authenticated user gets prompt messages when performing CRUD(Create,Read,Update,Delete) operations when using web app.
+
+| **Step**                                                  | **Expected Result**                          | **Actual Result** |
+| --------------------------------------------------------- | -------------------------------------------- | ----------------- |
+| Register: User fills the form and clicks on signin  | Dashboard page loads with success message      | Works as expected |
+| Login : User fills the form and clicks on login       | Dashboard page loads with success message         | Works as expected |
+| Comment Add: User fills the data and clicks on sbmit button    | Our post page loads with success message  | Works as expected |
+| Comment update: User fills the data and clicks on Update button | post detail page loads with success message | Works as expected |
+| Like : User click heart icon    | Our detail post page loads  | Works as expected |
+| Send collaboration request: User fills the form and clicks on submit  | Collaboration page loads with success message      | Works as expected |
+
+--
+
+10. As a site owner I can style my admin panel so that I can see the segregate the important values
+
+| **Step**                | **Expected Result**                                           | **Actual Result** |
+| ------------------------------------------------------- | ------------------------------------------------------------- | ----------------- |
+| Add search_field, list_display, list_filter, actions and others in admin.py | The admin panel was able to perform all functions | Work as expected  |
+| Add additional summernote in stories admin.py | The admin panel was able to display summernote functions | Work as expected  |
+| Add category in admin.py | The admin panel was able to display category functions | Work as expected  |
+| Add comments in admin.py | The admin panel was able to display comments functions | Work as expected  |
+| Add about in admin.py | The admin panel was able to display about functions | Work as expected  |
+| Add collaborate request in admin.py | The admin panel was able to display collaborate functions | Work as expected  |
+
+--
+
+## Bugs
+
+### Code Bug
+
+- All post's was displaying in all categories
+- I added the filter to filter the posts by category
+- When I deployed didnt want to read staticfiles
+- Contacting the Tutor support helped me fixing this issue
+
+
+### W3C Html Validator
+
+- No bug was found during Html validation
+
+### W3C CSS Validator
+
+- No bug was found during CSS Validation
+
+### CI Python Linter
+
+- No bug was found during Python Validation
+
+### Heroku Deployment
+
+- Error was shown while deploying in Heroku.
+- The same was resolved automatically after trying again
+- Maybe the error was because of getting data from Database
+
+## Unfixed Bugs
+
+- No unfixed bugs from developer side
+- Few bugs were unfixed which occurs because of external libraries: Google fonts and Bootstrap
+
+
+## Deployment
+
+###  Creating Database using ElephantSQL
+
+1. To generate a managed PostgreSQL database, please proceed to [ElephantSQL](https://customer.elephantsql.com/) and either sign up or sign in to your account. Once you've logged in, click on the 'Create New Instance' button.
+
+2. Name your database and select the 'Tiny Turtle' payment plan. Then, click on 'Select Region'
+
+3. Select your preferred region and create the database instance.
+- After creating the instance, navigate to the instances page and click on the name of the database you selected earlier. Then, in the details section on the following page, copy the PostgreSQL URL.
+
+
+### Deploying the website in Heroko
+
+- Before deploying in Heroku following files were created:
+  1. env.py : stores confidential data eg. API keys, passwords etc.
+
+  2. Procfile : Very important for deployment and must be added with capital P
+  
+  3. Requirements.txt: This must be updated for deployment in Heroku. It stores data of libraries used for project
+
+- The website was deployed to Heroko using following steps:
+
+#### Login or create an account at Heroku
+
+- Make an account in Heroko and login
+
+#### Creating an app
+
+- Create new app in the top right of the screen and add an app name.
+- Select region
+- Then click "create app".
+
+#### Open settings Tab
+
+##### Click on config var
+
+- Store CLOUDINARY_URL file from in key and add the values
+- Store DATABASE_URL file from in key and add the values
+- Store SECRET_KEY file from in key and add the values
+- Store PORT in key and value 8000
+
+NOTE: DISABLE_COLLECTSTATIC was also added, but was removed before deploying
+
+##### Add Buildpacks
+
+- Add python buildpack first
+
+##### Choose deployment method
+
+- Connect GITHUB
+- Login if prompted
+
+##### Connect to Github
+
+- Choose repositories you want to connect
+- Click "Connect"
+
+##### Automatic and Manual deploy
+
+- Choose a method to deploy
+- After Deploy is clicked it will install various file
+
+##### Initial Deployment
+
+- Project was deployed in Heroku without content: Initial Deployment
+
+##### Final Deployment
+
+- A view button will display
+- Once clicked the website will open
+
+
+### Forking the GitHub Repository
+
+1. Go to the GitHub repository
+2. Click on Fork button in top right corner
+3. You will then have a copy of the repository in your own GitHub account.
+4. [GitHub Repository](https://github.com/Sinha5714/humanitas_django_pp4)
+
+### Cloning the repository in GitHub
+
+1. Visit the GitHub page of the website's repository
+2. Click the “Clone” button on top of the page
+3. Click on “HTTPS”
+4. Click on the copy button next to the link to copy it
+5. Open your IDE
+6. Type `git clone <copied URL>` into the terminal
+
+
+## Credits
+
+### Content
+
+- The text content was provided by the site owner.
+- The color for website was chosen by site owner.
+- The Logo was provided by the site owner.
+- The fonts of the content was taken from [google fonts](https://fonts.google.com/)
+- The icons has been taken from [fontawesome.com](https://fontawesome.com/v6/docs/)
+
+### Media
+
+- The images in the website are taken from [unsplash.com](https://www.unsplash.com/)
+
+### Code
+
+#### The following ideas were borrowed from :
+ - [Think Before I Blog](https://learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum)
+ - inspired from many places from youtube
+ - The design made in canva was my pure idea
+
+## Thank You
+
+- special thanks to my husband for supporting me with this course
+- to Tutor Assistant for helping me when I was getting stuck with some challenges.
+- to my mentor Spencer Barriball for supporting me with his feedback through the entire project
+
+
+
+
+
 
 
 
