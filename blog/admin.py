@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Post, Comment, About, Category
+from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
 from .models import CollaborateRequest
 
 # Register your models here.
 
 # admin.site.register(Category)
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -22,7 +23,6 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
     summernote_fields = ('content')
-    
 
 
 @admin.register(Comment)
@@ -37,11 +37,6 @@ class CommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-@admin.register(About)
-class AboutAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'content')
-    summernote_fields = ('content',)
-
 # COLLABORATE REQUEST FORM
 
 @admin.register(CollaborateRequest)
@@ -49,5 +44,3 @@ class CollaborateRequestAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'email', 'message', 'read')
     search_fields = ['name', 'email']
     list_filter = ('name', 'email')
-
-

@@ -11,6 +11,9 @@ from django.contrib import messages
 
 
 class HomeScreen(View):
+    """
+    Renders the Index page
+    """
 
     def get(self, request):
         if request.user.is_authenticated:
@@ -25,13 +28,19 @@ class HomeScreen(View):
 
 
 class Dashboard(LoginRequiredMixin, generic.ListView):
+    """
+    Renders the Dashboard page after
+    login or register
+    """
     login_url = '/'
     model = Post
     template_name = 'dashboard.html'
-# Conclusion Page
 
 
 class ConclusionScreen(generic.ListView):
+    """
+    Renders the Conclusion page
+    """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'conclusion.html'
@@ -42,24 +51,20 @@ class ConclusionScreen(generic.ListView):
 
 
 class BooksScreen(generic.ListView):
+    """
+    Renders the Books page
+    """
     model = Post
     queryset = Post.objects.filter(
         status=1, category=2).order_by('-created_on')
     template_name = 'books.html'
     paginate_by = 6
 
-# AN EXAMPLE OF A FUNCTION - IT WILL GIVE ME THE
-# SAME AS THE ONE WITH THE CLASS FOR BOOKS
-# def BooksScreen(request):
-#     post = Post.objects.filter(category=2)
-
-#     return render(request, 'books.html', {
-#             "post_list": post
-#         }
-#     )
-
 
 class FashionScreen(generic.ListView):
+    """
+    Renders the Fashion page
+    """
     model = Post
     queryset = Post.objects.filter(
         status=1, category=3).order_by('-created_on')
@@ -68,6 +73,9 @@ class FashionScreen(generic.ListView):
 
 
 class SkincareScreen(generic.ListView):
+    """
+    Renders the Skincare page
+    """
     model = Post
     queryset = Post.objects.filter(
         status=1, category=4).order_by('-created_on')
@@ -76,6 +84,9 @@ class SkincareScreen(generic.ListView):
 
 
 class ParentingScreen(generic.ListView):
+    """
+    Renders the Parenting page
+    """
     model = Post
     queryset = Post.objects.filter(
         status=1, category=5).order_by('-created_on')
@@ -84,7 +95,9 @@ class ParentingScreen(generic.ListView):
 
 
 class PostDetail(View):
-
+    """
+    Details about the post
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -138,6 +151,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
+    """
+    Renders the About page
+    """
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -147,6 +163,7 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
         return HttpResponseRedirect(reverse('blog:post_detail', args=[slug]))
+
 # Function for edit button
 
 
@@ -227,4 +244,7 @@ def about_me(request):
 
 
 def error_page(request, exception):
+    """
+    Renders the error page
+    """
     return render(request, '404error.html')

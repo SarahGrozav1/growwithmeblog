@@ -8,6 +8,10 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Category(models.Model):
+    """
+    Category for every post to
+    be in the correct category
+    """
     name = models.CharField(max_length=100)
     description = models.TextField()
 
@@ -16,9 +20,14 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    """
+    Post model
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, default=None, null=True
+        )
     pub_date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts")
@@ -42,7 +51,12 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    """
+    Comment model
+    """
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments"
+    )
     name = models.CharField(max_length=200)
     email = models.EmailField()
     body = models.TextField()
@@ -59,6 +73,9 @@ class Comment(models.Model):
 
 
 class CollaborateRequest(models.Model):
+    """
+    An model for collaboration request
+    """
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()
@@ -66,6 +83,3 @@ class CollaborateRequest(models.Model):
 
     def __str__(self):
         return f"Collaboration request from {self.name}"
-
-
-

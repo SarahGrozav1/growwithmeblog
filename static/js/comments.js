@@ -11,7 +11,7 @@ const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
         let commentId = e.target.getAttribute("comment_id");
-        let commentTextBody = e.target.getAttribute("comment_text");
+        let commentTextBody = e.target.getAttribute("data-comment_text");
         commentText.value = commentTextBody;
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);

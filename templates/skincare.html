@@ -16,9 +16,9 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="{% static 'media/skincare.jpg' %}">
+                                    src="{% static 'media/skincare.jpg' %}" alt="A women with an arm putting oil">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Pic for post {{post.title}}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author text-white">Author: {{ post.author }}</p>

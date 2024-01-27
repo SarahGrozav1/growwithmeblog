@@ -30,9 +30,7 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left top">
             <div class="card-body">
-                <p class="card-text">
                     {{ post.content | safe }}
-                </p>
                 <div class="row">
 
                     <div class="col-1">
@@ -107,8 +105,8 @@
                 {% endif %}
                 <!-- If user want to edit his comment to have a button for edit only his comment not other users comment -->
                 {% if user.is_authenticated and comment.email == user.email %}
-                <button class="btn btn-edit btn-outline-light py-3 px-5 my-3" comment_id="{{ comment.id }}"
-                    comment_text="{{comment.body}}">Edit</button>
+                <button class="btn btn-edit btn-outline-light py-3 px-5 my-3" id="{{ comment.id }}"
+                    data-comment_text="{{comment.body}}">Edit</button>
                 {% endif %}
                 {% endif %}
                 {% endfor %}
