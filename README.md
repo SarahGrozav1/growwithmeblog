@@ -329,14 +329,6 @@ Project code structure is organized and constructed using Django Framework
 
 ---
 
-<details><summary>(ERD)Physical database model</summary>
-<img src="">
-</details>
-
-- This sample ERD diagram was made using [Lucid Charts](https://www.lucidchart.com)
-- For this Django app I ve used PostgreSQL relational database management system.
-- model showed on the diagram visually represents the structure of a PostgreSQL database, including tables, columns, relationships, and constraints, that is stored in the database itself.
-
 ### Data Models
 
 #### User Model
@@ -695,6 +687,7 @@ Project code structure is organized and constructed using Django Framework
 
 ### Features to be Implemented
 
+- Add a button for superuser to acces the admin page
 - Adding more design to the blog
 - Add more categories to the menu
 - Add two tools for blog in menu
